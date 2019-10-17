@@ -1,0 +1,66 @@
+CREATE TABLE Medicine
+(
+MedicineId int identity(1,1) primary key,
+MedicineName varchar(50) not null,
+CompanyName varchar(50) not null foreign key references Company(CompanuName),
+MedicineType varchar(50) not null,
+Dose varchar(50) not null,
+Stock int not null,
+PlaceOfMedicine varchar(50) not null,
+Barcode int not null,
+Code int not null,
+ProductionDate date not null,
+ExpiryDate date not null,
+CostPrice float not null,
+SellingPrice float not null,
+Quantity int not null,
+)
+
+CREATE TABLE Company
+(
+CompanyId int identity(1,1) primary key,
+CompanyName varchar(50) not null,
+CompanyPhoneNumber int not null,
+CompanyAddress varchar(50) not null,
+)
+
+CREATE TABLE EXPIRY
+(
+ExpityId int identity(1,1) primary key,
+ProductName varchar(50) not null foreign key references Medicine(MedicineName),
+ProductCode int not null,
+ExpiryDate date not null,
+QuantityRemain int not null,
+)
+
+CREATE TABLE SystemUser
+(
+UserId int identity(1,1) primary key,
+UserName varchar(50) not null,
+UserAddress varchar(50) not null,
+UserPhone int not null,
+UserSalary int not null,
+UserRole varchar(10) not null,
+UserLoginDateTime datetime null,
+)
+
+create table HistorySales
+(
+SalesId int identity(1,1) primary key,
+UserName varchar(50) not null,
+PuchaseDateTime datetime not null,
+MedicineBarcode int not null,
+MedicineName varchar(50) not null,
+MedicineType varchar(50) not null,
+MedicineDose varchar(50) not null,
+MedicienQuantity int not null,
+MedicinePrice float not null,
+)
+
+create table login
+(
+UserLoginId int identity(1,1) primary key,
+UserName varchar(50) not null,
+UserPassword varchar(50) not null,
+UserRole varchar(10) not null,
+)
